@@ -1,5 +1,6 @@
 const button = document.querySelector('.rainbow-button');
 const counter = document.querySelector('.counter');
+const clickSound = document.getElementById('clickSound');
 let count = 0;
 
 const colors = [
@@ -12,7 +13,16 @@ const colors = [
     '#9400D3'  // Violet
 ];
 
+// Function to play sound
+const playSound = () => {
+    clickSound.currentTime = 0; // Reset sound to start
+    clickSound.play();
+};
+
 button.addEventListener('click', () => {
+    // Play sound immediately
+    playSound();
+    
     count++;
     
     // Create rainbow text
