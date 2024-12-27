@@ -8,8 +8,11 @@ button.addEventListener('click', () => {
     // Increment click count
     clickCount++;
 
-    // Play the sound
-    clickSound.play();
+    // Attempt to play the sound (with error handling for certain browsers)
+    clickSound.currentTime = 0;  // Reset sound to start from the beginning each time
+    clickSound.play().catch((error) => {
+        console.log("Error playing sound:", error);
+    });
 
     // Update the counter text
     counterText.innerHTML = `You have clicked <span class="rainbow">${clickCount}</span> times.`;
